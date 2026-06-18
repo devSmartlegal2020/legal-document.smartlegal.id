@@ -18,3 +18,4 @@ npm run build
 pm2 restart legal-docs-smartlegal-id || pm2 start npm --name "legal-docs-smartlegal-id" -- start
 
 echo "Deployment finished successfully!"
+ 
