@@ -15,7 +15,6 @@ npm install
 npm run build
 
 # Restart or start PM2 process
-pm2 restart legal-docs-smartlegal-id || pm2 start npm --name "legal-docs-smartlegal-id" -- start
+pm2 restart legal-docs-smartlegal-id || pm2 start npm --name "legal-docs-smartlegal-id" -- start -- -p 3000
 
 echo "Deployment finished successfully!"
- 
