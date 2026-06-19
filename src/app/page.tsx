@@ -216,26 +216,26 @@ export default function LegalDocumentPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 flex-grow flex flex-col justify-center">
       {/* Progress Steps Indicator */}
-      <div className="flex items-center justify-center space-x-4 mb-10">
-        <div className="flex items-center">
-          <span className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold ${
+      <div className="flex items-center justify-center w-full max-w-lg mx-auto mb-10 gap-2 sm:gap-4 px-4">
+        <div className="flex items-center shrink-0">
+          <span className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
             step === 'form' ? 'bg-red-600 text-white ring-4 ring-red-600/20' : 'bg-red-50 text-red-600 font-bold'
           }`}>1</span>
-          <span className={`ml-2 text-sm font-semibold ${step === 'form' ? 'text-slate-900 font-bold' : 'text-slate-500'}`}>Data Leads</span>
+          <span className={`ml-2 text-sm font-semibold hidden sm:inline-block ${step === 'form' ? 'text-slate-900 font-bold' : 'text-slate-500'}`}>Data Leads</span>
         </div>
-        <div className="h-0.5 w-12 bg-slate-200"></div>
-        <div className="flex items-center">
-          <span className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold ${
+        <div className="h-0.5 flex-1 max-w-[48px] bg-slate-200 shrink-0"></div>
+        <div className="flex items-center shrink-0">
+          <span className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
             step === 'summary' ? 'bg-red-600 text-white ring-4 ring-red-600/20' : (step === 'success' ? 'bg-red-50 text-red-600' : 'bg-slate-100 text-slate-400')
           }`}>2</span>
-          <span className={`ml-2 text-sm font-semibold ${step === 'summary' ? 'text-slate-900 font-bold' : 'text-slate-500'}`}>Ringkasan</span>
+          <span className={`ml-2 text-sm font-semibold hidden sm:inline-block ${step === 'summary' ? 'text-slate-900 font-bold' : 'text-slate-500'}`}>Ringkasan</span>
         </div>
-        <div className="h-0.5 w-12 bg-slate-200"></div>
-        <div className="flex items-center">
-          <span className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold ${
+        <div className="h-0.5 flex-1 max-w-[48px] bg-slate-200 shrink-0"></div>
+        <div className="flex items-center shrink-0">
+          <span className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
             step === 'success' ? 'bg-emerald-600 text-white ring-4 ring-emerald-600/20' : 'bg-slate-100 text-slate-400'
           }`}>3</span>
-          <span className={`ml-2 text-sm font-semibold ${step === 'success' ? 'text-slate-900 font-bold' : 'text-slate-500'}`}>Selesai</span>
+          <span className={`ml-2 text-sm font-semibold hidden sm:inline-block ${step === 'success' ? 'text-slate-900 font-bold' : 'text-slate-500'}`}>Selesai</span>
         </div>
       </div>
 
@@ -276,7 +276,7 @@ export default function LegalDocumentPage() {
                     value={form.name}
                     onChange={handleInputChange}
                     placeholder="Budi Santoso"
-                    className="w-full pl-10 pr-4 py-2.5 bg-slate-55 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all text-sm"
+                    className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all text-sm"
                   />
                 </div>
                 {errors.name && <p className="mt-1 text-xs text-rose-500 flex items-center gap-1"><AlertCircle className="h-3.5 w-3.5" /> {errors.name}</p>}
