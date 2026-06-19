@@ -400,11 +400,11 @@ export default function LegalDocumentPage() {
                 <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-6">
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-slate-500 text-sm">Harga Spesial Bundle</span>
-                    <span className="text-slate-400 line-through text-xs">Rp 399.000</span>
+                    <span className="text-slate-400 line-through text-sm">Rp 499.000</span>
                   </div>
                   <div className="flex justify-between items-center border-t border-slate-200 pt-3">
                     <span className="text-slate-800 font-bold text-sm">Total Pembayaran</span>
-                    <span className="text-red-600 font-extrabold text-xl">Rp 99.000</span>
+                    <span className="text-red-600 font-extrabold text-xl">Rp 129.000</span>
                   </div>
                 </div>
               </div>
@@ -512,7 +512,7 @@ export default function LegalDocumentPage() {
                 <div>Email: <span className="text-slate-900">{transaction?.email}</span></div>
                 <div>Brand Terdaftar: <span className="text-slate-900">{transaction?.brandName}</span></div>
                 <div>Status Transaksi: <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 border border-emerald-200 rounded font-bold uppercase text-[9px]">Client</span></div>
-                <div>Harga Bundle: <span className="text-slate-900">Rp 99.000</span></div>
+                <div>Harga Bundle: <span className="text-slate-900">Rp 129.000</span></div>
               </div>
             </div>
 
@@ -559,7 +559,7 @@ export default function LegalDocumentPage() {
                 <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 font-mono text-xs text-slate-700">
                   <div>ID Transaksi: <span className="text-red-600">{transaction?.id}</span></div>
                   <div>Produk: <span className="text-slate-950">Bundle Template Legal</span></div>
-                  <div>Tagihan: <span className="text-slate-950">Rp 99.000</span></div>
+                  <div>Tagihan: <span className="text-slate-950">Rp 129.000</span></div>
                 </div>
               </div>
 

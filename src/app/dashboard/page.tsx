@@ -202,7 +202,9 @@ export default function DashboardPage() {
   // Metrics
   const totalLeads = transactions.filter(tx => tx.status === 'Leads').length;
   const totalClients = transactions.filter(tx => tx.status === 'Client').length;
-  const totalRevenue = totalClients * 99000;
+  const totalRevenue = transactions
+    .filter(tx => tx.status === 'Client')
+    .reduce((sum, tx) => sum + (tx.totalPrice || 0), 0);
   const conversionRate = transactions.length > 0 
     ? ((totalClients / transactions.length) * 100).toFixed(1) 
     : '0';

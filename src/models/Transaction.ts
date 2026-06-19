@@ -19,7 +19,7 @@ const TransactionSchema = new Schema<ITransaction>(
     email: { type: String, required: true },
     whatsapp: { type: String, required: true },
     brandName: { type: String, required: true },
-    totalPrice: { type: Number, required: true, default: 99000 },
+    totalPrice: { type: Number, required: true, default: 129000 },
     status: {
       type: String,
       required: true,

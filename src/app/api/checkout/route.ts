@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       email,
       whatsapp,
       brandName,
-      totalPrice: 99000,
+      totalPrice: 129000,
       status: 'Leads',
     });
 
@@ -53,7 +53,7 @@ export async function POST(request: Request) {
         const payload = {
           transaction_details: {
             order_id: transactionId,
-            gross_amount: 99000,
+            gross_amount: 129000,
           },
           customer_details: {
             first_name: name,
