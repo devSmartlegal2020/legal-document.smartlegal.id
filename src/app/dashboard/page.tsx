@@ -14,7 +14,8 @@ import {
   Smartphone,
   Check,
   Building,
-  Loader2
+  Loader2,
+  Download
 } from 'lucide-react';
 
 interface Transaction {
@@ -515,9 +516,17 @@ export default function DashboardPage() {
                           Simulasikan Lunas
                         </button>
                       ) : (
-                        <span className="text-[10px] text-slate-500 font-semibold italic flex items-center gap-1 justify-center">
-                          <CheckCircle className="h-3 w-3 text-emerald-500" /> Selesai
-                        </span>
+                        <div className="flex items-center justify-center gap-2">
+                          <span className="text-[10px] text-slate-500 font-semibold italic flex items-center gap-1">
+                            <CheckCircle className="h-3 w-3 text-emerald-500" /> Selesai
+                          </span>
+                          <a
+                            href={`/api/download/${tx.id}`}
+                            className="px-2.5 py-1 bg-red-600 hover:bg-red-700 active:scale-95 text-[10px] text-white font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer shadow-md shadow-red-600/10"
+                          >
+                            <Download className="h-3 w-3" /> Unduh ZIP
+                          </a>
+                        </div>
                       )}
                     </td>
 

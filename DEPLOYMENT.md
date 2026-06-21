@@ -105,6 +105,15 @@ ADMIN_USERNAME=your_secure_admin_username
 ADMIN_PASSWORD=your_very_secure_password_here
 ```
 
+### 3.2 — Konfigurasi Webhook di Dashboard Midtrans
+Agar status transaksi otomatis terupdate menjadi **Client (Lunas)** setelah pelanggan sukses melakukan pembayaran, Anda wajib mengonfigurasi Notification URL di Dashboard Midtrans:
+1. Login ke [Dashboard Midtrans](https://dashboard.midtrans.com/) (atau [Sandbox Dashboard](https://dashboard.sandbox.midtrans.com/)).
+2. Masuk ke menu **Settings → Configuration**.
+3. Pada field **Payment Notification URL**, masukkan URL webhook aplikasi Anda:
+   `https://domain-anda.com/api/webhook` (sesuaikan dengan domain HTTPS VPS Anda).
+4. Pastikan opsi request method diatur ke HTTP POST (default).
+5. Klik **Save/Update** untuk menyimpan konfigurasi.
+
 ---
 
 ## 🚀 FASE 4 — Jalankan deploy.sh
