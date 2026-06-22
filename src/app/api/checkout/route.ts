@@ -33,6 +33,13 @@ export async function POST(request: Request) {
       status: 'Leads',
     });
 
+    // Dapatkan host URL secara dinamis untuk webhook callback
+    const protocol = request.headers.get('x-forwarded-proto') || 'http';
+    const host = request.headers.get('host') || 'localhost:3000';
+    const defaultWebhookUrl = `${protocol}://${host}/api/webhook`;
+    const notificationUrl = process.env.MIDTRANS_NOTIFICATION_URL || defaultWebhookUrl;
+    console.log(`Configured Midtrans notification URL: ${notificationUrl}`);
+
     // Tentukan URL Snap API berdasarkan environment (production vs sandbox)
     const isProduction = process.env.MIDTRANS_IS_PRODUCTION === 'true';
     const midtransUrl = isProduction
@@ -71,6 +78,7 @@ export async function POST(request: Request) {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': `Basic ${authHeader}`,
+            'X-Override-Notification': notificationUrl,
           },
           body: JSON.stringify(payload),
         });
