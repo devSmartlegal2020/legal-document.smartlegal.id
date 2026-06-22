@@ -194,6 +194,8 @@ export default function LegalDocumentPage() {
         if (transaction) {
           setTransaction({ ...transaction, status: 'Client' });
         }
+        // Auto trigger document download
+        window.location.href = `/api/download/${trxId}`;
       } else {
         const data = await response.json();
         throw new Error(data.error || 'Gagal memperbarui status transaksi.');
@@ -202,6 +204,8 @@ export default function LegalDocumentPage() {
       setErrorMessage(`Pembayaran sukses, namun gagal sinkronisasi database: ${error.message}`);
       // Fallback transition so user gets documents anyway
       setStep('success');
+      // Attempt download even in fallback
+      window.location.href = `/api/download/${trxId}`;
     } finally {
       setLoading(false);
       setShowSimulatedPayment(false);

@@ -62,10 +62,10 @@ export async function POST(request: Request) {
       transaction_status === 'cancel' ||
       transaction_status === 'expire';
 
-    let updatedStatus: 'Leads' | 'Client' | null = null;
+    let updatedStatus: 'Leads' | 'Client' | 'Selesai Oleh System' | null = null;
 
     if (isSuccess) {
-      updatedStatus = 'Client';
+      updatedStatus = 'Selesai Oleh System';
     } else if (isFailed) {
       updatedStatus = 'Leads';
     }

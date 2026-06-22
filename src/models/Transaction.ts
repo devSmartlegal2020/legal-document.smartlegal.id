@@ -7,7 +7,7 @@ export interface ITransaction extends Document {
   whatsapp: string;
   brandName: string;
   totalPrice: number;
-  status: 'Leads' | 'Client';
+  status: 'Leads' | 'Client' | 'Selesai Oleh System' | 'Selesai Oleh Admin';
   createdAt: Date;
   updatedAt: Date;
 }
@@ -23,7 +23,7 @@ const TransactionSchema = new Schema<ITransaction>(
     status: {
       type: String,
       required: true,
-      enum: ['Leads', 'Client'],
+      enum: ['Leads', 'Client', 'Selesai Oleh System', 'Selesai Oleh Admin'],
       default: 'Leads',
     },
   },

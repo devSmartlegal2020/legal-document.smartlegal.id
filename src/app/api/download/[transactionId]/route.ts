@@ -16,7 +16,12 @@ export async function GET(
 
     // 2. Cari transaksi dan validasi statusnya
     const transaction = await Transaction.findOne({ id: transactionId });
-    if (!transaction || transaction.status !== 'Client') {
+    if (
+      !transaction ||
+      (transaction.status !== 'Client' &&
+        transaction.status !== 'Selesai Oleh System' &&
+        transaction.status !== 'Selesai Oleh Admin')
+    ) {
       return NextResponse.json(
         { error: 'Akses ditolak. Transaksi belum lunas atau tidak ditemukan.' },
         { status: 403 }

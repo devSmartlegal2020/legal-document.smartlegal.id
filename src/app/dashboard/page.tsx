@@ -26,7 +26,7 @@ interface Transaction {
   whatsapp: string;
   brandName: string;
   totalPrice: number;
-  status: 'Leads' | 'Client';
+  status: 'Leads' | 'Client' | 'Selesai Oleh System' | 'Selesai Oleh Admin';
 }
 
 export default function DashboardPage() {
@@ -168,13 +168,13 @@ export default function DashboardPage() {
       const response = await fetch('/api/payment-success', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ transactionId: trxId, status: 'Client' }),
+        body: JSON.stringify({ transactionId: trxId, status: 'Selesai Oleh Admin' }),
       });
       
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'Gagal memproses status transaksi.');
       
-      setSuccessMessage(`Berhasil menyimulasikan pembayaran untuk transaksi ${trxId}!`);
+      setSuccessMessage(`Berhasil menandai transaksi ${trxId} lunas oleh Admin!`);
       
       // Auto dismiss success toast after 3s
       setTimeout(() => setSuccessMessage(''), 4000);
@@ -202,9 +202,9 @@ export default function DashboardPage() {
 
   // Metrics
   const totalLeads = transactions.filter(tx => tx.status === 'Leads').length;
-  const totalClients = transactions.filter(tx => tx.status === 'Client').length;
+  const totalClients = transactions.filter(tx => tx.status === 'Client' || tx.status === 'Selesai Oleh System' || tx.status === 'Selesai Oleh Admin').length;
   const totalRevenue = transactions
-    .filter(tx => tx.status === 'Client')
+    .filter(tx => tx.status === 'Client' || tx.status === 'Selesai Oleh System' || tx.status === 'Selesai Oleh Admin')
     .reduce((sum, tx) => sum + (tx.totalPrice || 0), 0);
   const conversionRate = transactions.length > 0 
     ? ((totalClients / transactions.length) * 100).toFixed(1) 
@@ -412,7 +412,9 @@ export default function DashboardPage() {
             >
               <option value="all">Semua Status</option>
               <option value="Leads">Leads (Belum Bayar)</option>
-              <option value="Client">Client (Lunas)</option>
+              <option value="Client">Client (Lunas Simulator)</option>
+              <option value="Selesai Oleh System">Selesai Oleh System (Lunas Webhook)</option>
+              <option value="Selesai Oleh Admin">Selesai Oleh Admin (Lunas Admin)</option>
             </select>
           </div>
         </div>
@@ -493,6 +495,10 @@ export default function DashboardPage() {
                       <span className={`inline-flex px-2.5 py-1 text-[10px] font-bold uppercase rounded border ${
                         tx.status === 'Client'
                           ? 'bg-emerald-950/40 text-emerald-400 border-emerald-800/30'
+                          : tx.status === 'Selesai Oleh System'
+                          ? 'bg-blue-950/40 text-blue-400 border-blue-800/30'
+                          : tx.status === 'Selesai Oleh Admin'
+                          ? 'bg-purple-950/40 text-purple-400 border-purple-800/30'
                           : 'bg-red-950/40 text-red-500 border-red-800/30'
                       }`}>
                         {tx.status}
@@ -513,7 +519,7 @@ export default function DashboardPage() {
                           ) : (
                             <Check className="h-3 w-3" />
                           )}
-                          Simulasikan Lunas
+                          Set Lunas (Admin)
                         </button>
                       ) : (
                         <div className="flex items-center justify-center gap-2">

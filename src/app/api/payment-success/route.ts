@@ -14,9 +14,9 @@ export async function POST(request: Request) {
       );
     }
 
-    if (status !== 'Leads' && status !== 'Client') {
+    if (status !== 'Leads' && status !== 'Client' && status !== 'Selesai Oleh System' && status !== 'Selesai Oleh Admin') {
       return NextResponse.json(
-        { error: 'Status tidak valid. Hanya menerima "Leads" atau "Client".' },
+        { error: 'Status tidak valid. Hanya menerima "Leads", "Client", "Selesai Oleh System", atau "Selesai Oleh Admin".' },
         { status: 400 }
       );
     }
